@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Welcome to <%= title %>!</h1>
+    <form id="search-form">
+        <input type="text" id="search-input" placeholder="Search for anime">
+        <button type="submit">Search</button>
+    </form>
+    <div id="search-results"></div>
+    <script>
+        $(document).ready(function() {
+            $('#search-form').on('submit', function(e) {
+                e.preventDefault();
+                var query = $('#search-input').val();
+                $.get('/search', { query: query }, function(data) {
+                    var results = data.map(function(result) {
+                        return `<div>
+                            <h2>${result.title}</h2>
+                            <img src="${result.poster}" alt="${result.title}">
+                            <a href="/anime-details?slug=${result.slug}">View details</a>
+                        </div>`;
+                    });
+                    $('#search-results').html(results.join(''));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "my-package",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "1.js",
+  "scripts": {
+    "start": "node 1.mjs --slug naruto"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
+    "commander": "^10.0.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.1",
+    "request": "^2.88.2",
+    "yargs": "^17.7.2"
+  }
+}
